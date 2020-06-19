@@ -1,20 +1,34 @@
 package com.bridgelabz;
 public class MoodAnalyser {
     String message;
-
+    /**
+     * non parametrized constructor
+     */
     public MoodAnalyser() {
-        message = "default";
+        message = null;
     }
-
+    /**
+     * parameterised constructor
+     * @param message
+     */
     public MoodAnalyser(String message) {
         this.message = message;
     }
-
+    /**
+     *
+     * @param message
+     * @return  mood from no parameter analyse method
+     * @throws MoodAnalysisException
+     */
     public String analyseMood(String message) throws MoodAnalysisException {
         this.message = message;
         return analyseMood();
     }
-
+    /**
+     *
+     * @return mood of the user
+     * @throws MoodAnalysisException
+     */
     public String analyseMood() throws MoodAnalysisException {
         try {
             if (message.length() == 0)

@@ -4,10 +4,11 @@ public class MoodAnalysisException extends Exception{
             ENTERED_NULL,ENTERED_EMPTY
       }
       ExceptionType type;
-      public MoodAnalysisException(String message) {
-            super(message);
-      }
-
+      /**
+       * custom exception handling
+       * @param type
+       * @param message
+       */
       public MoodAnalysisException(ExceptionType type, String message) {
             super(message);
             this.type = type;
