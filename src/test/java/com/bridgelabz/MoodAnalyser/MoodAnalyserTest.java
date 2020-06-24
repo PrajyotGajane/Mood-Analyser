@@ -69,7 +69,10 @@ public class MoodAnalyserTest {
 
     @Test
     public void givenClassNameWrong_ShouldThrow_MoodAnalysisException() {
-        MoodAnalyser moodAnalyser = MoodAnalyserFactory.createMoodAnalyzer();
-        Assert.assertEquals(new MoodAnalyser(), moodAnalyser);
+        try {
+            MoodAnalyserFactory.createMoodAnalyzer("Class not found","com.bridgelabz.MoodAnalyser",String.class);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.Entered_CLASS_NOT_FOUND, e.type);
+        }
     }
 }
