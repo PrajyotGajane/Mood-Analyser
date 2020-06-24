@@ -70,9 +70,18 @@ public class MoodAnalyserTest {
     @Test
     public void givenClassNameWrong_ShouldThrow_MoodAnalysisException() {
         try {
-            MoodAnalyserFactory.createMoodAnalyzer("Class not found","com.bridgelabz.MoodAnalyser",String.class);
+            MoodAnalyserFactory.createMoodAnalyzer("Class not found","com.bridgelabz.MoodAnalysis",String.class);
         } catch (MoodAnalysisException e) {
-            Assert.assertEquals(MoodAnalysisException.ExceptionType.Entered_CLASS_NOT_FOUND, e.type);
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_CLASS_NOT_FOUND, e.type);
+        }
+    }
+
+    @Test
+    public void givenClassConstructorWrong_ShouldThrow_MoodAnalysisException() {
+        try {
+            MoodAnalyserFactory.createMoodAnalyzer("Constructor not found", "com.bridgelabz.MoodAnalyser", Integer.class);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_CONSTRUCTOR_NOT_FOUND, e.type);
         }
     }
 }
