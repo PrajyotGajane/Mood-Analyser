@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.MoodAnalyser.MoodAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-24T20:32:48" hostname="HOME" time="0.009">
+<testsuite name="com.bridgelabz.MoodAnalyser.MoodAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-24T20:43:34" hostname="HOME" time="0.006">
   <properties/>
-  <testcase name="givenMoodAnalyser_WhenProperShouldReturn_MooddAnalyserObject" classname="com.bridgelabz.MoodAnalyser.MoodAnalyserTest" time="0.009"/>
+  <testcase name="givenImproperClassName_ShouldThrow_MoodAnalysisException" classname="com.bridgelabz.MoodAnalyser.MoodAnalyserTest" time="0.006"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
