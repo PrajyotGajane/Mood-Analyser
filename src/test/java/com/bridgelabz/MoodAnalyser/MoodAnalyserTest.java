@@ -1,4 +1,5 @@
 package com.bridgelabz.MoodAnalyser;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -79,7 +80,7 @@ public class MoodAnalyserTest {
     @Test
     public void givenClassConstructorWrong_ShouldThrow_MoodAnalysisException() {
         try {
-            MoodAnalyserFactory.createMoodAnalyzer("Constructor not found", "com.bridgelabz.MoodAnalyser", Integer.class);
+            MoodAnalyserFactory.createMoodAnalyzer("Constructor not found", "com.bridgelabz.MoodAnalyser" , String.class);
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_CONSTRUCTOR_NOT_FOUND, e.type);
         }
@@ -100,6 +101,15 @@ public class MoodAnalyserTest {
             MoodAnalyserFactory.createMoodAnalyzer("Proper","com.bridgelabz.MoodAnalys", String.class);
         } catch (MoodAnalysisException e){
             Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_CLASS_NOT_FOUND, e.type);
+        }
+    }
+
+    @Test
+    public void givenImproperConstructor_ShouldThrow_MoodAnalysisException() {
+        try{
+            MoodAnalyserFactory.createMoodAnalyzer("Proper","com.bridgelabz.MoodAnalysis", Integer.class);
+        } catch ( MoodAnalysisException e){
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_CONSTRUCTOR_NOT_FOUND, e.type);
         }
     }
 }
