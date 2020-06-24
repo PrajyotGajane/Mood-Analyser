@@ -1,11 +1,13 @@
-package com.bridgelabz;
+package com.bridgelabz.MoodAnalyser;
+
 public class MoodAnalyser {
     String message;
+    Object another;
     /**
      * non parametrized constructor
      */
     public MoodAnalyser() {
-        message = null;
+        message = "default";
     }
     /**
      * parameterised constructor
@@ -44,5 +46,9 @@ public class MoodAnalyser {
             throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL,"Please enter proper message");
         }
     }
-
+    public boolean equals(Object another) {
+        if (this.message.equals(((MoodAnalyser) another).message))
+            return true;
+        return false;
+    }
 }

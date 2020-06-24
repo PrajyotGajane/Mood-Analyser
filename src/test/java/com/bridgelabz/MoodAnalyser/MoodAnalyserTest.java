@@ -1,9 +1,7 @@
-package com.bridgelabz;
-
+package com.bridgelabz.MoodAnalyser;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
 public class MoodAnalyserTest {
     MoodAnalyser moodAnalyser = new MoodAnalyser();
     @Test
@@ -32,30 +30,46 @@ public class MoodAnalyserTest {
         try {
             ExpectedException expectedException = ExpectedException.none();
             expectedException.expect(MoodAnalysisException.class);
-            String mood = moodAnalyser.analyseMood(null);
-            //Assert.assertEquals("Happy",mood);
+            moodAnalyser.analyseMood(null);
         } catch (MoodAnalysisException e) {
             e.printStackTrace();
         }
     }
-
     @Test
-    public void givenNullMood_ShouldThrowException() {
-        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+    public void givenNullMood_ShouldThrow_Exception() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
         try{
             moodAnalyser.analyseMood(null);
         }catch (MoodAnalysisException e){
             Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_NULL, e.type);
         }
     }
-
     @Test
-    public void givenEmptyMood_ShouldThrowException() {
+    public void givenEmptyMood_ShouldThrow_Exception() {
         MoodAnalyser moodAnalyser = new MoodAnalyser("");
         try{
             moodAnalyser.analyseMood();
         }catch (MoodAnalysisException e){
             Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_EMPTY,e.type);
         }
+    }
+
+    @Test
+    public void givenMoodAnalyserClass_ShouldReturn_MoodAnalyserObject() {
+        MoodAnalyser moodAnalyzer = new MoodAnalyser();
+        MoodAnalyser factoryConstructor = null;
+            try {
+                factoryConstructor = MoodAnalyserFactory.createMoodAnalyzer();
+
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        Assert.assertEquals(moodAnalyzer, factoryConstructor);
+    }
+
+    @Test
+    public void givenClassNameWrong_ShouldThrow_MoodAnalysisException() {
+        MoodAnalyser moodAnalyser = MoodAnalyserFactory.createMoodAnalyzer();
+        Assert.assertEquals(new MoodAnalyser(), moodAnalyser);
     }
 }
