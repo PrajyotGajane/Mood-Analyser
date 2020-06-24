@@ -84,4 +84,13 @@ public class MoodAnalyserTest {
             Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_CONSTRUCTOR_NOT_FOUND, e.type);
         }
     }
+
+    @Test
+    public void givenMoodAnalyser_WhenProperShouldReturn_MooddAnalyserObject() {
+        try{
+            Assert.assertEquals("Proper",MoodAnalyserFactory.createMoodAnalyzer("Proper","com.bridgelabz.MoodAnalysis", String.class));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
