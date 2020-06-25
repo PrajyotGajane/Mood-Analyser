@@ -1,11 +1,8 @@
 package com.bridgelabz;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
 import java.lang.reflect.Constructor;
-
 public class MoodAnalyserTest {
     MoodAnalyser moodAnalyser = new MoodAnalyser();
     @Test
@@ -57,7 +54,6 @@ public class MoodAnalyserTest {
             Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_EMPTY,e.type);
         }
     }
-
     @Test
     public void givenMoodAnalyserClass_ShouldReturn_MoodAnalyserObject() {
         try {
@@ -68,7 +64,6 @@ public class MoodAnalyserTest {
             e.printStackTrace();
         }
     }
-
     @Test
     public void givenClassNameWrong_ShouldThrow_MoodAnalysisException() {
         try {
@@ -93,7 +88,6 @@ public class MoodAnalyserTest {
     public void givenHappyMessageWithReflection_ShouldReturn_HappyMood() throws Exception {
         Assert.assertEquals("HAPPY", MoodAnalyserReflector.invokeMethod("com.bridgelabz.MoodAnalyser","analyseMood",String.class,"I am Happy"));
     }
-
     @Test
     public void givenImproperHappyMessage_ShouldReturn_MoodAnalysisException() {
         try{
@@ -104,7 +98,6 @@ public class MoodAnalyserTest {
             e.printStackTrace();
         }
     }
-
     @Test
     public void givenFieldNameUsingReflector_ShouldSetMoodDynamically() {
         String mood = null;

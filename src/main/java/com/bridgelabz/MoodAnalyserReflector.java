@@ -3,10 +3,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
 public class MoodAnalyserReflector {
       public static Constructor<?> getConstructor(Class<?> ... param) throws MoodAnalysisException {
-
             try {
                   Class<?> moodAnalyserClass = Class.forName("com.bridgelabz.MoodAnalyser");
                   return moodAnalyserClass.getConstructor(param);
@@ -17,7 +15,6 @@ public class MoodAnalyserReflector {
             }
             return null;
       }
-
       public static Object createMoodAnalyser(Constructor<?> constructor, Object ... message){
             try {
                   return constructor.newInstance(message);
@@ -44,14 +41,14 @@ public class MoodAnalyserReflector {
             }
             return null;
       }
-      public static String setFieldValue(String className, String fieldName, String mood) throws MoodAnalysisException {
+      public static String setFieldValue(String className, String fieldName, String moodPassed) throws MoodAnalysisException {
             try {
                   Class<?> classChecker = Class.forName(className);
                   Constructor<?> constructor = classChecker.getConstructor();
                   Object object = constructor.newInstance();
                   Field field = classChecker.getDeclaredField(fieldName);
-                  field.set(object, mood);
-                  return MoodAnalyserReflector.invokeMethod(className, "analyseMood", String.class, mood);
+                  field.set(object, moodPassed);
+                  return MoodAnalyserReflector.invokeMethod(className, "analyseMood", String.class, moodPassed);
             } catch (NoSuchFieldException e) {
                   throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_FIELD, "No such field found");
             } catch (MoodAnalysisException e) {

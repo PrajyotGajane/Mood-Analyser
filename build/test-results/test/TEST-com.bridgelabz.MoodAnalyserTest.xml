@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.MoodAnalyserTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-06-25T13:09:50" hostname="HOME" time="0.345">
+<testsuite name="com.bridgelabz.MoodAnalyserTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-06-25T14:00:36" hostname="HOME" time="0.391">
   <properties/>
-  <testcase name="givenImproperHappyMessage_ShouldReturn_MoodAnalysisException" classname="com.bridgelabz.MoodAnalyserTest" time="0.02"/>
-  <testcase name="givenFieldNameUsingReflector_WhenNull_ShouldThrowException" classname="com.bridgelabz.MoodAnalyserTest" time="0.084"/>
-  <testcase name="givenHappyMessageWithReflection_ShouldReturn_HappyMood" classname="com.bridgelabz.MoodAnalyserTest" time="0.002"/>
-  <testcase name="givenClassNameWrong_ShouldThrow_MoodAnalysisException" classname="com.bridgelabz.MoodAnalyserTest" time="0.122"/>
-  <testcase name="givenNullMood_ShouldThrow_Exception" classname="com.bridgelabz.MoodAnalyserTest" time="0.001"/>
-  <testcase name="givenNullMood_ShouldReturn_Happy" classname="com.bridgelabz.MoodAnalyserTest" time="0.073"/>
-  <testcase name="givenFieldNameUsingReflector_WhenImproper_ShouldThrowException" classname="com.bridgelabz.MoodAnalyserTest" time="0.0"/>
-  <testcase name="givenFieldNameUsingReflector_ShouldSetMoodDynamically" classname="com.bridgelabz.MoodAnalyserTest" time="0.011"/>
+  <testcase name="givenImproperHappyMessage_ShouldReturn_MoodAnalysisException" classname="com.bridgelabz.MoodAnalyserTest" time="0.015"/>
+  <testcase name="givenFieldNameUsingReflector_WhenNull_ShouldThrowException" classname="com.bridgelabz.MoodAnalyserTest" time="0.098"/>
+  <testcase name="givenHappyMessageWithReflection_ShouldReturn_HappyMood" classname="com.bridgelabz.MoodAnalyserTest" time="0.001"/>
+  <testcase name="givenClassNameWrong_ShouldThrow_MoodAnalysisException" classname="com.bridgelabz.MoodAnalyserTest" time="0.13"/>
+  <testcase name="givenNullMood_ShouldThrow_Exception" classname="com.bridgelabz.MoodAnalyserTest" time="0.0"/>
+  <testcase name="givenNullMood_ShouldReturn_Happy" classname="com.bridgelabz.MoodAnalyserTest" time="0.116"/>
+  <testcase name="givenFieldNameUsingReflector_WhenImproper_ShouldThrowException" classname="com.bridgelabz.MoodAnalyserTest" time="0.006"/>
+  <testcase name="givenFieldNameUsingReflector_ShouldSetMoodDynamically" classname="com.bridgelabz.MoodAnalyserTest" time="0.002"/>
   <testcase name="givenMoodSad_ShouldReturn_Sad" classname="com.bridgelabz.MoodAnalyserTest" time="0.001"/>
-  <testcase name="givenMoodHappy_ShouldReturn_Happy" classname="com.bridgelabz.MoodAnalyserTest" time="0.001"/>
-  <testcase name="givenMoodAnalyserClass_ShouldReturn_MoodAnalyserObject" classname="com.bridgelabz.MoodAnalyserTest" time="0.0"/>
+  <testcase name="givenMoodHappy_ShouldReturn_Happy" classname="com.bridgelabz.MoodAnalyserTest" time="0.002"/>
+  <testcase name="givenMoodAnalyserClass_ShouldReturn_MoodAnalyserObject" classname="com.bridgelabz.MoodAnalyserTest" time="0.001"/>
   <testcase name="givenClassConstructorWrong_ShouldThrow_MoodAnalysisException" classname="com.bridgelabz.MoodAnalyserTest" time="0.001"/>
   <testcase name="givenEmptyMood_ShouldThrow_Exception" classname="com.bridgelabz.MoodAnalyserTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
@@ -20,9 +20,9 @@
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
-	at com.bridgelabz.MoodAnalyserReflector.invokeMethod(MoodAnalyserReflector.java:39)
-	at com.bridgelabz.MoodAnalyserReflector.setFieldValue(MoodAnalyserReflector.java:54)
-	at com.bridgelabz.MoodAnalyserTest.givenFieldNameUsingReflector_WhenNull_ShouldThrowException(MoodAnalyserTest.java:129)
+	at com.bridgelabz.MoodAnalyserReflector.invokeMethod(MoodAnalyserReflector.java:36)
+	at com.bridgelabz.MoodAnalyserReflector.setFieldValue(MoodAnalyserReflector.java:51)
+	at com.bridgelabz.MoodAnalyserTest.givenFieldNameUsingReflector_WhenNull_ShouldThrowException(MoodAnalyserTest.java:122)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -71,8 +71,8 @@
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
 	at java.lang.Thread.run(Thread.java:748)
 Caused by: com.bridgelabz.MoodAnalysisException: Please enter proper message
-	at com.bridgelabz.MoodAnalyser.analyseMood(MoodAnalyser.java:46)
-	at com.bridgelabz.MoodAnalyser.analyseMood(MoodAnalyser.java:27)
+	at com.bridgelabz.MoodAnalyser.analyseMood(MoodAnalyser.java:44)
+	at com.bridgelabz.MoodAnalyser.analyseMood(MoodAnalyser.java:25)
 	... 54 more
 java.lang.ClassNotFoundException: com.bridgelabz.MoodAnalysi
 	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
@@ -81,8 +81,8 @@ java.lang.ClassNotFoundException: com.bridgelabz.MoodAnalysi
 	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
 	at java.lang.Class.forName0(Native Method)
 	at java.lang.Class.forName(Class.java:264)
-	at com.bridgelabz.MoodAnalyserReflector.invokeMethod(MoodAnalyserReflector.java:35)
-	at com.bridgelabz.MoodAnalyserTest.givenClassNameWrong_ShouldThrow_MoodAnalysisException(MoodAnalyserTest.java:75)
+	at com.bridgelabz.MoodAnalyserReflector.invokeMethod(MoodAnalyserReflector.java:32)
+	at com.bridgelabz.MoodAnalyserTest.givenClassNameWrong_ShouldThrow_MoodAnalysisException(MoodAnalyserTest.java:70)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -131,9 +131,9 @@ java.lang.ClassNotFoundException: com.bridgelabz.MoodAnalysi
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
 	at java.lang.Thread.run(Thread.java:748)
 com.bridgelabz.MoodAnalysisException: Please enter proper message
-	at com.bridgelabz.MoodAnalyser.analyseMood(MoodAnalyser.java:46)
-	at com.bridgelabz.MoodAnalyser.analyseMood(MoodAnalyser.java:27)
-	at com.bridgelabz.MoodAnalyserTest.givenNullMood_ShouldReturn_Happy(MoodAnalyserTest.java:37)
+	at com.bridgelabz.MoodAnalyser.analyseMood(MoodAnalyser.java:44)
+	at com.bridgelabz.MoodAnalyser.analyseMood(MoodAnalyser.java:25)
+	at com.bridgelabz.MoodAnalyserTest.givenNullMood_ShouldReturn_Happy(MoodAnalyserTest.java:34)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
