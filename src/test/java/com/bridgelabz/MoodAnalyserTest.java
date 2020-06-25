@@ -1,8 +1,11 @@
-package com.bridgelabz.MoodAnalyser;
+package com.bridgelabz;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import java.lang.reflect.Constructor;
+
 public class MoodAnalyserTest {
     MoodAnalyser moodAnalyser = new MoodAnalyser();
     @Test
@@ -57,59 +60,48 @@ public class MoodAnalyserTest {
 
     @Test
     public void givenMoodAnalyserClass_ShouldReturn_MoodAnalyserObject() {
-        MoodAnalyser moodAnalyzer = new MoodAnalyser();
-        MoodAnalyser factoryConstructor = null;
-            try {
-                factoryConstructor = MoodAnalyserFactory.createMoodAnalyzer();
-
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-        Assert.assertEquals(moodAnalyzer, factoryConstructor);
-    }
-
-    @Test
-    public void givenClassNameWrong_ShouldThrow_MoodAnalysisException() {
         try {
-            MoodAnalyserFactory.createMoodAnalyzer("Class not found","com.bridgelabz.MoodAnalysis",String.class);
+            Constructor constructor = MoodAnalyserReflector.getConstructor(String.class);
+            Object myObject = MoodAnalyserReflector.createMoodAnalyser(constructor,"I am Happy");
+            Assert.assertEquals(new MoodAnalyser("I am Happy"),myObject);
         } catch (MoodAnalysisException e) {
-            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_CLASS_NOT_FOUND, e.type);
-        }
-    }
-
-    @Test
-    public void givenClassConstructorWrong_ShouldThrow_MoodAnalysisException() {
-        try {
-            MoodAnalyserFactory.createMoodAnalyzer("Constructor not found", "com.bridgelabz.MoodAnalyser" , String.class);
-        } catch (MoodAnalysisException e) {
-            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_CONSTRUCTOR_NOT_FOUND, e.type);
-        }
-    }
-
-    @Test
-    public void givenMoodAnalyser_WhenProperShouldReturn_MooddAnalyserObject() {
-        try{
-            Assert.assertEquals("Proper",MoodAnalyserFactory.createMoodAnalyzer("Proper","com.bridgelabz.MoodAnalysis", String.class));
-        } catch (Exception e){
             e.printStackTrace();
         }
     }
 
     @Test
-    public void givenImproperClassName_ShouldThrow_MoodAnalysisException() {
-        try{
-            MoodAnalyserFactory.createMoodAnalyzer("Proper","com.bridgelabz.MoodAnalys", String.class);
-        } catch (MoodAnalysisException e){
+    public void givenClassNameWrong_ShouldThrow_MoodAnalysisException() {
+        try {
+            MoodAnalyserReflector.invokeMethod("com.bridgelabz.MoodAnalysi","moodAnalyse", String.class, "I am Happy");
+        } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_CLASS_NOT_FOUND, e.type);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+    @Test
+    public void givenClassConstructorWrong_ShouldThrow_MoodAnalysisException() {
+        try {
+            MoodAnalyserReflector.invokeMethod("com.bridgelabz.MoodAnalyser", "mood" , String.class, "I a, Happy");
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, e.type);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void givenHappyMessageWithReflection_ShouldReturn_HappyMood() throws Exception {
+        Assert.assertEquals("HAPPY", MoodAnalyserReflector.invokeMethod("com.bridgelabz.MoodAnalyser","analyseMood",String.class,"I am Happy"));
     }
 
     @Test
-    public void givenImproperConstructor_ShouldThrow_MoodAnalysisException() {
+    public void givenImproperHappyMessage_ShouldReturn_MoodAnalysisException() {
         try{
-            MoodAnalyserFactory.createMoodAnalyzer("Proper","com.bridgelabz.MoodAnalysis", Integer.class);
-        } catch ( MoodAnalysisException e){
-            Assert.assertEquals(MoodAnalysisException.ExceptionType.ENTERED_CONSTRUCTOR_NOT_FOUND, e.type);
+            MoodAnalyserReflector.invokeMethod("com.bridgelabz.MoodAnalyser","analyseMoo",String.class,"Happy");
+        } catch (MoodAnalysisException e){
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, e.type);
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 
