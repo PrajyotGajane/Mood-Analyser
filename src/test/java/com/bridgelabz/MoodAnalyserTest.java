@@ -105,4 +105,30 @@ public class MoodAnalyserTest {
         }
     }
 
+    @Test
+    public void givenFieldNameUsingReflector_ShouldSetMoodDynamically() {
+        String mood = null;
+        try {
+            mood = MoodAnalyserReflector.setFieldValue("com.bridgelabz.MoodAnalyser", "message", "I am in happy mood");
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
+        Assert.assertEquals("HAPPY", mood);
+    }
+    @Test
+    public void givenFieldNameUsingReflector_WhenImproper_ShouldThrowException() {
+        try {
+            MoodAnalyserReflector.setFieldValue("com.bridgelabz.MoodAnalyser", "messag", "I am in happy mood");
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.NO_SUCH_FIELD, e.type);
+        }
+    }
+    @Test
+    public void givenFieldNameUsingReflector_WhenNull_ShouldThrowException() {
+        try {
+            MoodAnalyserReflector.setFieldValue("com.bridgelabz.MoodAnalyser", "message", null);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.ExceptionType.NULL_INVOCATION, e.type);
+        }
+    }
 }
